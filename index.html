@@ -140,6 +140,7 @@
     [data-theme="light"] .contact-social-pill {
       background: rgba(15, 23, 42, 0.02);
     }
+
     [data-theme="light"] .contact-field {
       background: rgba(15, 23, 42, 0.04);
       border: 1px solid rgba(15, 23, 42, 0.15);
@@ -207,6 +208,7 @@
     [data-theme="dark"] .moon-icon {
       display: none;
     }
+
     [data-theme="dark"] .sun-icon {
       display: block;
     }
@@ -214,6 +216,7 @@
     [data-theme="light"] .moon-icon {
       display: block;
     }
+
     [data-theme="light"] .sun-icon {
       display: none;
     }
@@ -1813,6 +1816,135 @@
       box-shadow: var(--shadow);
       border-color: var(--glass-border);
     }
+
+    /* --- Moving Skills Marquee --- */
+    .skills-marquee-section {
+      width: 100%;
+      overflow: hidden;
+      padding: 1rem 0;
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    
+    .marquee-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      padding: 0.5rem 0;
+    }
+    
+    /* Subtle fade gradient on edges */
+    .marquee-container::before,
+    .marquee-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 150px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    
+    .marquee-container::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg-deep), transparent);
+    }
+    
+    .marquee-container::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg-deep), transparent);
+    }
+    
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      will-change: transform;
+    }
+    
+    .scroll-left-track {
+      animation: scroll-left 32s linear infinite;
+    }
+    
+    .scroll-right-track {
+      animation: scroll-right 32s linear infinite;
+    }
+    
+    /* Pause animation on hover */
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+    
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 1.35rem;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 100px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+    }
+    
+    .tech-pill:hover {
+      transform: translateY(-2px) scale(1.05);
+      border-color: var(--glass-border-hover);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 20px rgba(56, 225, 214, 0.25);
+    }
+    
+    [data-theme="light"] .tech-pill:hover {
+      background: rgba(124, 108, 240, 0.06);
+      box-shadow: 0 0 20px rgba(124, 108, 240, 0.15);
+    }
+    
+    .tech-pill img,
+    .tech-pill svg {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+    
+    .tech-pill:hover img,
+    .tech-pill:hover svg {
+      transform: scale(1.15) rotate(5deg);
+    }
+    
+    .tech-pill span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--fs-small);
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+    }
+    
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    @keyframes scroll-right {
+      0% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
   </style>
 </head>
 
@@ -1927,9 +2059,9 @@
       name: "Hemanth G",
       profileImage: "Assets/images/profile_image.jpg",            // <-- did put your photo path/URL here
       hero: {
-        eyebrow: "Landing (Design Engineering Zone)",
+        eyebrow: "Intelligent Software & Full-Stack Projects",
         titleHtml: `Building <span class="glow">autonomous systems</span> and the software that runs them.`,
-        lede: `I design end-to-end — from responsive React frontends and RESTful backends to <span class="hl" data-tip="OpenCV models running live on Raspberry Pi">computer-vision pipelines deployed on real hardware</span>. Currently a CSE final-year at Presidency University, Bangalore.`,
+        lede: `I design end-to-end — from responsive React frontends and RESTful backends to <span class="hl" data-tip="OpenCV models running live on Raspberry Pi">computer-vision pipelines deployed on real hardware</span>. Actively interviewing for Full-Stack and AI Engineering roles.`,
         stats: [
           { num: "5+", lbl: "Shipped projects" },
           { num: "2", lbl: "Research papers" },
@@ -1939,7 +2071,7 @@
       },
       about: {
         paras: [
-          `I'm a full-stack and web developer with a strong foundation in <span class="hl" data-tip="Data structures, algorithms & object-oriented design">data structures and OOP</span>, and full-stack architecture. I like owning a problem end to end — designing the interface, deploying the API, and pushing optimizations down to the hardware when the system demands it.`,
+          `I'm a <span class="hl" data-tip="React, Node.js, and Computer Vision models">Full-Stack, Web Developer and AI Engineer</span> with a strong foundation in <span class="hl" data-tip="Data structures, algorithms & object-oriented design">data structures, OOP, and full-stack architecture</span>. I like owning a problem end-to-end — from designing responsive interfaces and deploying scalable APIs to training machine learning models and optimizing computer-vision pipelines down to the hardware when the system demands it.`,
           `My work sits at the intersection of <span class="hl v" data-tip="Scalable web apps on one side, robotics on the other">web engineering and autonomous systems</span>. I bring a strong problem-solving mindset and a habit of testing rigorously, shaped by exposure to real product-innovation cycles.`
         ],
         quick: [
@@ -2158,8 +2290,55 @@
     </div></div>`;
 
       // SKILLS
+      const rosSvg = `<svg class="tech-logo-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: #e54c1c;"><title>ROS</title><path d="M2.807 0C1.353 0 .173 1.22.173 2.722c0 1.504 1.18 2.723 2.634 2.723 1.455 0 2.635-1.22 2.635-2.723S4.262 0 2.807 0zM12 0c-1.455 0-2.634 1.22-2.634 2.722 0 1.504 1.18 2.723 2.634 2.723 1.455 0 2.634-1.22 2.634-2.723S13.454 0 12 0zm9.193 0c-1.455 0-2.635 1.22-2.635 2.722s1.18 2.723 2.635 2.723c1.454 0 2.634-1.22 2.634-2.723S22.647 0 21.193 0zM2.807 9.176c-1.455 0-2.634 1.22-2.634 2.722 0 1.504 1.18 2.723 2.634 2.723 1.455 0 2.635-1.22 2.635-2.723s-1.18-2.722-2.635-2.722zm9.193 0c-1.455 0-2.634 1.22-2.634 2.722 0 1.504 1.18 2.723 2.634 2.723 1.455 0 2.634-1.22 2.634-2.723s-1.18-2.722-2.634-2.722zm9.193 0c-1.455 0-2.635 1.22-2.635 2.722 0 1.504 1.18 2.723 2.635 2.723 1.454 0 2.634-1.22 2.634-2.723s-1.18-2.722-2.634-2.722zM2.807 18.35c-1.455 0-2.634 1.22-2.634 2.723C.173 22.576 1.353 23.8 2.807 23.8c1.455 0 2.635-1.224 2.635-2.727 0-1.503-1.18-2.722-2.635-2.722zm9.193 0c-1.455 0-2.634 1.22-2.634 2.723 0 1.503 1.18 2.727 2.634 2.727 1.455 0 2.634-1.224 2.634-2.727 0-1.503-1.18-2.722-2.634-2.722zm9.193 0c-1.455 0-2.635 1.22-2.635 2.723 0 1.503 1.18 2.727 2.635 2.727 1.454 0 2.634-1.224 2.634-2.727 0-1.503-1.18-2.722-2.634-2.722z"/></svg>`;
+
+      const techMarquee1 = [
+        { name: "React.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+        { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+        { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+        { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+        { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+        { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+        { name: "ROS", logo: rosSvg },
+        { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+        { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" }
+      ];
+
+      const techMarquee2 = [
+        { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+        { name: "OpenCV", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" },
+        { name: "TensorFlow", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+        { name: "Raspberry Pi", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" },
+        { name: "Arduino", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" },
+        { name: "C#", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
+        { name: ".NET Core", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" },
+        { name: "Flask", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
+        { name: "Pandas", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+        { name: "NumPy", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" }
+      ];
+
+      const renderPill = item => {
+        const isSvg = item.logo.startsWith('<svg');
+        const imgHtml = isSvg ? item.logo : `<img src="${item.logo}" alt="${item.name}" loading="lazy" />`;
+        return `<div class="tech-pill">${imgHtml}<span>${item.name}</span></div>`;
+      };
+
+      const track1HTML = [...techMarquee1, ...techMarquee1].map(renderPill).join('');
+      const track2HTML = [...techMarquee2, ...techMarquee2].map(renderPill).join('');
+
       document.getElementById('skills').innerHTML = `<div class="wrap">
     <div class="sec-head reveal"><div class="sec-tag">// skills (the tech stack context)</div><h2>The toolkit.</h2></div>
+    
+    <!-- Moving Row 1 (Above the grid) -->
+    <div class="skills-marquee-section reveal" style="margin-bottom: 2.5rem;">
+      <div class="marquee-container">
+        <div class="marquee-track scroll-left-track">
+          ${track1HTML}
+        </div>
+      </div>
+    </div>
+
     <div class="skills-grid">
       ${DATA.skills.map(s => `<div class="glass skill-card reveal ${s.soft ? 'soft' : ''}">
         <div class="ico">${s.ico}</div><h3>${s.title}</h3>
@@ -2167,7 +2346,16 @@
       </div>`).join('')}
     </div>
     
-    <div class="sec-head reveal" style="margin-top: 4rem;"><div class="sec-tag">// languages</div><h2>I speak.</h2></div>
+    <!-- Moving Row 2 (Below the grid) -->
+    <div class="skills-marquee-section reveal" style="margin-top: 3.5rem; margin-bottom: 0;">
+      <div class="marquee-container">
+        <div class="marquee-track scroll-right-track">
+          ${track2HTML}
+        </div>
+      </div>
+    </div>
+    
+    <div class="sec-head reveal" style="margin-top: 4.5rem;"><div class="sec-tag">// languages</div><h2>I speak.</h2></div>
     <div class="langs">
       ${DATA.languages.map(l => `<div class="glass lang reveal">
         <div class="lname">${l.name}</div><div class="level">${l.level}</div>
@@ -2565,7 +2753,7 @@
       const N = 420, pg = new THREE.BufferGeometry(), pos = new Float32Array(N * 3);
       for (let i = 0; i < N * 3; i++)pos[i] = (Math.random() - 0.5) * 22;
       pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-      
+
       const field = new THREE.Points(pg, fieldMat); scene.add(field);
 
       let mx = 0, my = 0, tx = 0, ty = 0;
@@ -2581,7 +2769,7 @@
         renderer.render(scene, camera);
         if (!reduceMotion) requestAnimationFrame(animate);
       }
-      
+
       updateSceneColors();
 
       requestAnimationFrame(() => canvas.classList.add('ready'));
